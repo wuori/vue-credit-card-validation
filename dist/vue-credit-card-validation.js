@@ -1,5 +1,5 @@
 /*!
- * vue-credit-card-validation v0.1.2 
+ * vue-credit-card-validation v0.1.4 
  * (c) 2019 Michael Wuori
  * Released under the MIT License.
  */
@@ -697,10 +697,10 @@ var format = {
     },
 };
 
-var cardFormat = {
+var VueCardFormat = {
   install: function install(vue, opts) {
     // provide plugin to Vue
-    Vue.prototype.$cardFormat = format;
+    vue.prototype.$cardFormat = format;
     // provide directive
     vue.directive('cardformat', {
       bind: function bind(el, binding, vnode) {
@@ -721,9 +721,9 @@ var cardFormat = {
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(cardFormat);
+  window.Vue.use(VueCardFormat);
 }
 
-return cardFormat;
+return VueCardFormat;
 
 })));
