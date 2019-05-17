@@ -1,9 +1,9 @@
 import { default as format } from './format.js';
 
-const cardFormat = {
+const VueCardFormat = {
   install(vue, opts) {
     // provide plugin to Vue
-    Vue.prototype.$cardFormat = format;
+    vue.prototype.$cardFormat = format;
     // provide directive
     vue.directive('cardformat', {
       bind(el, binding, vnode) {
@@ -23,8 +23,8 @@ const cardFormat = {
   }
 }
 
-export default cardFormat;
+export default VueCardFormat;
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(cardFormat)
+  window.Vue.use(VueCardFormat)
 }
