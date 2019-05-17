@@ -1,0 +1,69 @@
+[v-cloak] {
+        display: none;
+      }
+      label{
+        font-weight: bold;
+        color: #666;
+      }
+      div.error, li.error{
+        color: #f00;
+      }
+      .card-header{
+        font-weight: 500;
+      }
+      input[data-error="true"]{
+        border-color: #dc3545;
+        padding-right: calc(1.5em + .75rem);
+        background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E);
+        background-repeat: no-repeat;
+        background-position: center right calc(.375em + .1875rem);
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
+      .card-number{
+        padding-right: 20px;
+        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-size: .9rem;
+        cursor: pointer;
+      }
+      i{
+        font-size: 1.5rem;
+      }
+      th{
+        padding: 5px;
+        background: #eee;
+      }
+      td{
+        padding: 0 5px;
+        border-bottom: 1px solid #eee;
+      }
+      .github-corner:hover .octo-arm {
+          animation: octocat-wave 560ms ease-in-out
+        }
+      
+        @keyframes octocat-wave {
+      
+          0%,
+          100% {
+            transform: rotate(0)
+          }
+      
+          20%,
+          60% {
+            transform: rotate(-25deg)
+          }
+      
+          40%,
+          80% {
+            transform: rotate(10deg)
+          }
+        }
+      
+        @media (max-width:500px) {
+          .github-corner:hover .octo-arm {
+            animation: none
+          }
+      
+          .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out
+          }
+        }
