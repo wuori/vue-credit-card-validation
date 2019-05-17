@@ -29,9 +29,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
     "uglify-js": "^2.7.5",
-    "vue": "^2.1.10",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.1"
+    "vue": "^2.6.10",
+    "webpack": "^2.2.0"
   },
   "files": [
     "dist/vue-credit-card-validation.js",
