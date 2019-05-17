@@ -25,9 +25,9 @@ Adding vue-credit-card-helper to your application is as simple as any other plug
 ```js
 import Vue from 'vue';
 
-import VueStripePayment from 'vue-credit-card-helper';
+import VueCardFormat from 'vue-credit-card-helper';
 
-Vue.use(VueStripePayment);
+Vue.use(VueCardFormat);
 
 new Vue({
   el: '#app',
