@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vue Credit Card Helpers Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+      [v-cloak] {
+        display: none;
+      }
+      label{
+        font-weight: bold;
+        color: #666;
+      }
+      div.error, li.error{
+        color: #f00;
+      }
+      .card-header{
+        font-weight: 500;
+      }
+      input[data-error="true"]{
+        border-color: #dc3545;
+        padding-right: calc(1.5em + .75rem);
+        background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E);
+        background-repeat: no-repeat;
+        background-position: center right calc(.375em + .1875rem);
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
+      .card-number{
+        padding-right: 20px;
+        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-size: .9rem;
+        cursor: pointer;
+      }
+      i{
+        font-size: 1.5rem;
+      }
+      th{
+        padding: 5px;
+        background: #eee;
+      }
+      td{
+        padding: 0 5px;
+        border-bottom: 1px solid #eee;
+      }
+    </style>
+    <!-- Libraries only required for demo. -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <div id="app" v-cloak>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <h2 class="text-white text-center">vue-cc-helpers example:</h2>
+    </nav>
+    <div class="container pb-4">
+      <div class="row pt-4">
+        <div class="col-12">
+          <form>
+            <div class="row pt-4">
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label>Card Number:</label>
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i :class="cardBrandClass"></i></span>
+                    </div>
+                    <input ref="cardNumInput" :data-error="(cardErrors.cardNumber)?true:false" v-model="cardNumber" type="tel" class="form-control" placeholder="#### #### #### ####" v-cardformat:formatCardNumber>
+                  </div>
+                  <div v-if="cardErrors.cardNumber" class="error">
+                    <small>{{ cardErrors.cardNumber }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-2">
+              <div class="col-4 col-lg-2">
+                <div class="form-group">
+                  <label>Card Expiration:</label>
+                  <input ref="cardExpInput" id="card-exp" :data-error="(cardErrors.cardExpiry)?true:false" v-model="cardExpiry" class="form-control" v-cardformat:formatCardExpiry>
+                  <div v-if="cardErrors.cardExpiry" class="error">
+                    <small>{{ cardErrors.cardExpiry }}</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 col-lg-2">
+                <div class="form-group">
+                  <label>Card CVC:</label>
+                  <input ref="cardCvcInput" :data-error="(cardErrors.cardCvc)?true:false" v-model="cardCvc" class="form-control" v-cardformat:formatCardCVC>
+                  <div v-if="cardErrors.cardCvc" class="error">
+                    <small>{{ cardErrors.cardCvc }}</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group">
+                  <label>Restrict Numeric:</label>
+                  <input placeholder="Only numbers allowed..." v-model="cardPostal" class="form-control" v-cardformat:restrictNumeric>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 pt-2">
+                <button type="button" class="btn btn-primary" @click="validate">Validate Card Details</button>
+                <button type="button" class="btn btn-light" @click="reset">Reset</button>
+              </div>
+            </div>
+          </form>
+          <hr class="my-5">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card mb-4">
+                <div class="card-header">Computed Values</div>
+                <div class="card-body pt-1">
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item px-1">Card Brand: <span v-if="!cardBrand" style="color: #ccc;">(awating input...)</span><code v-if="cardBrand" class="px-2">{{ cardBrand }}</code></li>
+                      <li class="list-group-item px-1">Brand Classname: <code class="px-2">{{ cardBrandClass }}</code></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card mb-4">
+                <div class="card-header">Validation Errors:</div>
+                <div class="card-body pt-1">
+                  <div class="card-blocktext-dark">
+                    <ul class="list-group list-group-flush mx-0">
+                      <li class="list-group-item px-1 error" v-for="err in cardErrors">{{ err }}</li>
+                      <li class="list-group-item px-1" v-if="!Object.keys(cardErrors).length">No errors.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card">
+                <div class="card-header">Test Data:</div>
+                <div class="card-body pt-1">
+                  <div class="card-block pt-2">
+                    <table class="alternate" style="width: 100%;">
+                      <thead>
+                        <tr>
+                          <th>Card Number</th>
+                          <th>Brand</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class=" card-number" @click="prefill('4242 4242 4242 4242')">4242 4242 4242 4242</td>
+                          <td>Visa</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('5555 5555 5555 4444')">5555 5555 5555 4444</td>
+                          <td>Mastercard</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('3782 822463 10005')">3782 822463 10005</td>
+                          <td>Am Ex</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('6011 1111 1111 1117')">6011 1111 1111 1117</td>
+                          <td>Discover</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('3056 9309 0259 04')">3056 9309 0259 04</td>
+                          <td>Diners Club</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('3566 0020 2036 0505')">3566 0020 2036 0505</td>
+                          <td>JCB</td>
+                        </tr>
+                        <tr>
+                          <td class=" card-number" @click="prefill('6200 0000 0000 0005')">6200 0000 0000 0005</td>
+                          <td>UnionPay</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"
+    integrity="sha256-C6USxZcxxFo9Wm1p3PFcYgEVpHQqRegQ0dgGc8rlR4o="
+    crossorigin="anonymous"
+  ></script>
+  <script src="../dist/vue-stripe-helpers.js"></script>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      computed: {
+        cardBrandClass(){
+          return this.getBrandClass(this.cardBrand);
+        }
+      },
+      data: {
+        cardNumber: null,
+        cardExpiry: null,
+        cardCvc: null,
+        cardPostal: null,
+        cardErrors: {},
+        // declaring card-brand in data{} enables card brand name/classes.
+        cardBrand: null,
+        // demo only
+        $cardFormat: Vue.prototype.$cardFormat
+      },
+      methods: {
+        validate: function(){
+
+          // init
+          this.cardErrors = {};
+          
+          // validate card number
+          if(!this.$cardFormat.validateCardNumber(this.cardNumber)){
+            this.cardErrors.cardNumber = "Invalid Credit Card Number.";
+          };
+
+          // validate card expiry
+          if (!this.$cardFormat.validateCardExpiry(this.cardExpiry)) {
+            this.cardErrors.cardExpiry = "Invalid Expiration Date.";
+          };
+
+          // validate card CVC
+          if (!this.$cardFormat.validateCardCVC(this.cardCvc)) {
+            this.cardErrors.cardCvc = "Invalid CVC.";
+          };
+
+        },
+        reset: function(){
+          this.cardErrors = {};
+          this.cardNumber = null;
+          this.cardExpiry = null;
+          this.cardCvc = null;
+          this.cardPostal = null;
+          this.$refs.cardNumInput.focus();
+        },
+        prefill: function(ccNum){
+          this.cardNumber = ccNum;
+          this.$cardFormat.setCardType({
+            currentTarget : this.$refs.cardNumInput,
+            value: ccNum
+          });
+        },
+        getBrandClass: function (brand) {
+          let icon = '';
+          brand = brand || 'unknown';
+          let cardBrandToClass = {
+            'visa': 'fab fa-cc-visa',
+            'mastercard': 'fab fa-cc-mastercard',
+            'amex': 'fab fa-cc-amex',
+            'discover': 'fab fa-cc-discover',
+            'diners': 'fab fa-cc-diners-club',
+            'jcb': 'fab fa-cc-jcb',
+            'unknown': 'fa fa-credit-card',
+          };
+          if (cardBrandToClass[brand]) {
+            icon = cardBrandToClass[brand];
+          };
+
+          return icon;
+        }
+      },
+      watch: {
+        // handle auto-focus to next field
+        // Note: since CVC can be 3 OR 4 digits we don't watch it
+        cardNumber: function(val){
+          if(this.$cardFormat.validateCardNumber(val)){
+            this.$refs.cardExpInput.focus();
+          }
+        },
+        cardExpiry: function (val) {
+          if (this.$cardFormat.validateCardExpiry(val)) {
+            this.$refs.cardCvcInput.focus();
+          }
+        }
+      },
+      mounted(){
+        this.$refs.cardNumInput.focus();
+      } 
+    });
+  </script>
+</body>
+</html>
