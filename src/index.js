@@ -7,6 +7,10 @@ const VueCardFormat = {
     // provide directive
     vue.directive('cardformat', {
       bind(el, binding, vnode) {
+        // see if el is an input
+        if (el.nodeName !== 'input'){
+          el = el.querySelector('input');
+        }
         // call format function from prop
         let method = Object.keys(format).find((key) => key.toLowerCase() === binding.arg.toLowerCase());
         format[method](el, vnode);

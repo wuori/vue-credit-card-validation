@@ -1,5 +1,5 @@
 /*!
- * vue-credit-card-validation v0.1.4 
+ * vue-credit-card-validation v0.1.5 
  * (c) 2019 Michael Wuori
  * Released under the MIT License.
  */
@@ -700,6 +700,10 @@ var VueCardFormat = {
     // provide directive
     vue.directive('cardformat', {
       bind: function bind(el, binding, vnode) {
+        // see if el is an input
+        if (el.nodeName !== 'input'){
+          el = el.querySelector('input');
+        }
         // call format function from prop
         var method = Object.keys(format).find(function (key) { return key.toLowerCase() === binding.arg.toLowerCase(); });
         format[method](el, vnode);
