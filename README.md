@@ -7,7 +7,7 @@ A dependency-free Vue plugin for formatting and validating credit card form fiel
 
 A directive is provided for input masking form fields,
 
-[Demo](https://wuori.github.io/vue-credit-card-validation/example)
+[View Demo](https://wuori.github.io/vue-credit-card-validation/example/)
 
 ## Installation
 
@@ -58,7 +58,7 @@ The `v-cardformat` directive is now available to your app. Masks can be accessed
 </form>
 ```
 
-View the [advanced example](https://wuori.github.io/vue-credit-card-validation/example) to see other functionalities that can be used with this plugin.
+View the [advanced example](https://wuori.github.io/vue-credit-card-validation/example/) to see other functionalities that can be used with this plugin.
  
 For further details, see the [stripe/jquery.payment](https://github.com/stripe/jquery.payment) readme.
 
