@@ -13,19 +13,19 @@ A directive is provided for input masking form fields,
 
 Via npm:
 ```sh
-yarn add vue-credit-card-helper
+yarn add vue-credit-card-validation
 - OR -
-npm install vue-credit-card-helper
+npm install vue-credit-card-validation
 ```
 
 ## Using this plugin
 
-Adding vue-credit-card-helper to your application is as simple as any other plugin:
+Adding vue-credit-card-validation to your application is as simple as any other plugin:
 
 ```js
 import Vue from 'vue';
 
-import VueCardFormat from 'vue-credit-card-helper';
+import VueCardFormat from 'vue-credit-card-validation';
 
 Vue.use(VueCardFormat);
 
