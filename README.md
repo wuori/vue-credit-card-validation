@@ -1,6 +1,6 @@
 # vue-credit-card-validation
 
-[![npm](https://img.shields.io/npm/v/vue-credit-card-validation.svg)](https://www.npmjs.com/package/vue-credit-card-helper)
+[![npm](https://img.shields.io/npm/v/vue-credit-card-validation.svg)](https://www.npmjs.com/package/vue-credit-card-validation)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 
 A dependency-free Vue plugin for formatting and validating credit card form fields.
