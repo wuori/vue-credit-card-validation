@@ -32,8 +32,6 @@
     "vue": "^2.6.10",
     "webpack": "^2.2.0",
     "is-my-json-valid": "^2.20.0"
-  }
-
   },
   "files": [
     "dist/vue-credit-card-validation.js",
