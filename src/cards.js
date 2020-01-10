@@ -49,7 +49,7 @@ export default [
         type: 'amex',
         patterns: [34, 37],
         format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
-        length: [15],
+        length: [15,16],
         cvcLength: [3, 4],
         luhn: true
     },
