@@ -1,13 +1,13 @@
 /*!
- * vue-credit-card-validation v0.1.5 
- * (c) 2019 Michael Wuori
+ * vue-credit-card-validation v0.1.6 
+ * (c) 2020 Michael Wuori
  * Released under the MIT License.
  */
 var cards = [
     {
         type: 'maestro',
         patterns: [
-            5018, 502, 503, 506, 56, 58, 639, 6220, 67
+            5018, 502, 503, 506, 56, 58, 639, 6220, 67, 633
         ],
         format: /(\d{1,4})/g,
         length: [12, 13, 14, 15, 16, 17, 18, 19],
@@ -54,7 +54,7 @@ var cards = [
         type: 'amex',
         patterns: [34, 37],
         format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
-        length: [15],
+        length: [15, 16],
         cvcLength: [3, 4],
         luhn: true
     },
@@ -699,7 +699,7 @@ var VueCardFormat = {
     vue.directive('cardformat', {
       bind: function bind(el, binding, vnode) {
         // see if el is an input
-        if (el.nodeName !== 'input'){
+        if (el.nodeName.toLowerCase() !== 'input'){
           el = el.querySelector('input');
         }
         // call format function from prop
