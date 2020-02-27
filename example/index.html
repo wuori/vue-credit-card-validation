@@ -43,7 +43,7 @@
               <div class="col-4 col-lg-2">
                 <div class="form-group">
                   <label>Card Expiration:</label>
-                  <input ref="cardExpInput" id="card-exp" :data-error="(cardErrors.cardExpiry)?true:false" v-model="cardExpiry" class="form-control" v-cardformat:formatCardExpiry>
+                  <input ref="cardExpInput" id="card-exp" :data-error="(cardErrors.cardExpiry)?true:false" v-model="cardExpiry" maxlength="10" class="form-control" v-cardformat:formatCardExpiry>
                   <div v-if="cardErrors.cardExpiry" class="error">
                     <small>{{ cardErrors.cardExpiry }}</small>
                   </div>
@@ -82,6 +82,9 @@
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item px-1">Card Brand: <span v-if="!cardBrand" style="color: #ccc;">(awating input...)</span><code v-if="cardBrand" class="px-2">{{ cardBrand }}</code></li>
                       <li class="list-group-item px-1">Brand Classname: <code class="px-2">{{ cardBrandClass }}</code></li>
+                      <li class="list-group-item px-1">Number: <code class="px-2">{{ cardNumber }}</code></li>
+                      <li class="list-group-item px-1">Expiration: <code class="px-2">{{ cardExpiry }}</code></li>
+                      <li class="list-group-item px-1">Formatted Exp: <code class="px-2">{{ cardExpiry }}</code></li>
                     </ul>
                   </div>
                 </div>

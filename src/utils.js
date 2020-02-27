@@ -282,6 +282,11 @@ const cardFormatUtils = {
         }
     },
 
+    // Adds maxlength to Expiry field
+    handleExpiryAttributes: function(e){
+        e.setAttribute('maxlength', 9);
+    },
+
     // Format CVC
     reFormatCVC: function (e) {
         let target = e.currentTarget;

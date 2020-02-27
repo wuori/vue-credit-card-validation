@@ -25,14 +25,15 @@ const format = {
     },
 
     formatCardExpiry: function (el) {
+        cardFormatUtils.handleExpiryAttributes(el);
         el.addEventListener('keypress', cardFormatUtils.restrictNumeric);
-        el.addEventListener('keypress', cardFormatUtils.restrictExpiry);
         el.addEventListener('keypress', cardFormatUtils.formatExpiry);
         el.addEventListener('keypress', cardFormatUtils.formatForwardSlashAndSpace);
         el.addEventListener('keypress', cardFormatUtils.formatForwardExpiry);
         el.addEventListener('keydown', cardFormatUtils.formatBackExpiry);
         el.addEventListener('change', cardFormatUtils.reFormatExpiry);
         el.addEventListener('input', cardFormatUtils.reFormatExpiry);
+        el.addEventListener('blur', cardFormatUtils.reFormatExpiry);
         return this;
     },
 

@@ -1,7 +1,7 @@
 {
   "name": "vue-credit-card-validation",
   "description": "A Vue plugin for formatting and validating credit card forms to offer the same functionality as Stripe's jquery.payment library (and more!).",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Michael Wuori",
     "email": "michael.wuori@gmail.com"
