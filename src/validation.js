@@ -2,10 +2,6 @@ import { default as cardFormatUtils } from './utils.js';
 
 const validation = {
 
-    cardExpiryVal: function () {
-        return vuePayment.payment.cardExpiryVal(this.value);
-    },
-
     cardExpiryVal: function (value) {
         let [month, year] = Array.from(value.split(/[\s\/]+/, 2));
 

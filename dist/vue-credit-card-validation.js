@@ -1,5 +1,5 @@
 /*!
- * vue-credit-card-validation v0.1.7 
+ * vue-credit-card-validation v0.1.9 
  * (c) 2020 Michael Wuori
  * Released under the MIT License.
  */
@@ -99,10 +99,6 @@ var cards = [
 ];
 
 var validation = {
-
-    cardExpiryVal: function () {
-        return vuePayment.payment.cardExpiryVal(this.value);
-    },
 
     cardExpiryVal: function (value) {
         var ref = Array.from(value.split(/[\s\/]+/, 2));
