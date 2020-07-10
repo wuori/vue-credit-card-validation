@@ -298,7 +298,12 @@ var cardFormatUtils = {
 
     // Safe Val
 
-    safeVal: function (value, target) {
+    safeVal: function (value, target, e) {
+
+        if (e.inputType === 'deleteContentBackward') {
+            return;
+        }
+       
         var cursor;
         try {
             cursor = target.selectionStart;
@@ -371,7 +376,7 @@ var cardFormatUtils = {
             var value = target.value;
             value = cardFormatUtils.replaceFullWidthChars(value);
             value = value.replace(/\D/g, '');
-            return cardFormatUtils.safeVal(value, target);
+            return cardFormatUtils.safeVal(value, target, e);
         });
     },
 
@@ -383,7 +388,7 @@ var cardFormatUtils = {
             var value = target.value;
             value = cardFormatUtils.replaceFullWidthChars(value);
             value = validation.formatCardNumber(value);
-            return cardFormatUtils.safeVal(value, target);
+            return cardFormatUtils.safeVal(value, target, e);
         });
     },
 
@@ -456,7 +461,7 @@ var cardFormatUtils = {
             var value = target.value;
             value = cardFormatUtils.replaceFullWidthChars(value);
             value = validation.formatExpiry(value);
-            return cardFormatUtils.safeVal(value, target);
+            return cardFormatUtils.safeVal(value, target, e);
         });
     },
 
@@ -542,7 +547,7 @@ var cardFormatUtils = {
             var value = target.value;
             value = cardFormatUtils.replaceFullWidthChars(value);
             value = value.replace(/\D/g, '').slice(0, 4);
-            return cardFormatUtils.safeVal(value, target);
+            return cardFormatUtils.safeVal(value, target, e);
         });
     },
 
