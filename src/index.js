@@ -3,7 +3,12 @@ import { default as format } from './format.js';
 const VueCardFormat = {
   install(vue, opts) {
     // provide plugin to Vue
-    vue.prototype.$cardFormat = format;
+    if ( typeof vue.prototype !== 'undefined' ) {
+      vue.prototype.$cardFormat = format;
+    } else {
+      // vue 3.0+
+      vue.config.globalProperties.$cardFormat = format; 
+    }
     // provide directive
     vue.directive('cardformat', {
       bind(el, binding, vnode) {
@@ -27,8 +32,8 @@ const VueCardFormat = {
   }
 }
 
-export default VueCardFormat;
-
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(VueCardFormat)
 }
+
+export default VueCardFormat;
