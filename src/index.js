@@ -11,7 +11,7 @@ const VueCardFormat = {
     }
     // provide directive
     vue.directive('cardformat', {
-      bind(el, binding, vnode) {
+      beforeMount(el, binding, vnode) {
         // see if el is an input
         if (el.nodeName.toLowerCase() !== 'input'){
           el = el.querySelector('input');
@@ -20,10 +20,10 @@ const VueCardFormat = {
         let method = Object.keys(format).find((key) => key.toLowerCase() === binding.arg.toLowerCase());
         format[method](el, vnode);
         // update cardBrand value if available
-        if (method == 'formatCardNumber' && typeof vnode.context.cardBrand !== 'undefined'){
+        if (method == 'formatCardNumber' && typeof binding.instance.cardBrand !== 'undefined'){
           el.addEventListener('keyup', () => {
             if (el.dataset.cardBrand) {
-              vnode.context.cardBrand = el.dataset.cardBrand;
+              binding.instance.cardBrand = el.dataset.cardBrand;
             };
           })
         }
