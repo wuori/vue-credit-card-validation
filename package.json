@@ -32,7 +32,7 @@
     "set-value": ">=4.0.1",
     "uglify-js": "^2.7.5",
     "vue": "^2.6.11",
-    "webpack": "^2.2.0",
+    "webpack": "^5.52.1",
     "yargs-parser": ">=5.0.1"
   },
   "files": [
