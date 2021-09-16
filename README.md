@@ -31,6 +31,18 @@ npm i vue-credit-card-validation@0.1.x
 Adding vue-credit-card-validation to your application is as simple as any other plugin:
 
 ```js
+// Vue 3 - Implementation Example
+import VueCreditCardValidation from 'vue-credit-card-validation';
+const Example = { 
+  // your app code
+};
+const app = createApp(Example);
+app.use(VueCreditCardValidation);
+app.mount('#app');
+```
+
+```js
+// Vue 2 - Implementation Example
 import Vue from 'vue';
 
 import VueCardFormat from 'vue-credit-card-validation';
