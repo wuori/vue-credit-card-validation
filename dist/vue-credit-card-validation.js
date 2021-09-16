@@ -1,5 +1,5 @@
 /*!
- * vue-credit-card-validation v0.1.11 
+ * vue-credit-card-validation v1.0.2 
  * (c) 2021 Michael Wuori
  * Released under the MIT License.
  */
