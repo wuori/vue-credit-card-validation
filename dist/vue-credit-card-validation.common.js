@@ -1,6 +1,6 @@
 /*!
- * vue-credit-card-validation v0.1.9 
- * (c) 2020 Michael Wuori
+ * vue-credit-card-validation v0.1.10 
+ * (c) 2021 Michael Wuori
  * Released under the MIT License.
  */
 'use strict';
@@ -677,6 +677,7 @@ var format = {
     },
 
     formatCardNumber: function (el) {
+        el.maxLength = 19;
         el.addEventListener('keypress', cardFormatUtils.restrictNumeric);
         el.addEventListener('keypress', cardFormatUtils.restrictCardNumber);
         el.addEventListener('keypress', cardFormatUtils.formatCardNumber);
@@ -695,7 +696,7 @@ var format = {
         el.addEventListener('change', cardFormatUtils.restrictNumeric);
         el.addEventListener('input', cardFormatUtils.restrictNumeric);
         return this;
-    },
+    }
 };
 
 var VueCardFormat = {
