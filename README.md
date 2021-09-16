@@ -16,18 +16,14 @@ A directive is provides input masking, card brand awareness, card number and exp
 
 Via npm:
 ```sh
-yarn add vue-credit-card-validation
-- OR -
-npm install vue-credit-card-validation
+npm i vue-credit-card-validation
 ```
 
 *For Vue 2:*
 
 Via npm:
 ```sh
-yarn add vue-credit-card-validation@0.1.x
-- OR -
-npm install vue-credit-card-validation@0.1.x
+npm i vue-credit-card-validation@0.1.x
 ```
 
 ## Using this plugin
