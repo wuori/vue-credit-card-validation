@@ -38,6 +38,7 @@ const format = {
     },
 
     formatCardNumber: function (el) {
+        el.maxLength = 19;
         el.addEventListener('keypress', cardFormatUtils.restrictNumeric);
         el.addEventListener('keypress', cardFormatUtils.restrictCardNumber);
         el.addEventListener('keypress', cardFormatUtils.formatCardNumber);
@@ -56,7 +57,7 @@ const format = {
         el.addEventListener('change', cardFormatUtils.restrictNumeric);
         el.addEventListener('input', cardFormatUtils.restrictNumeric);
         return this;
-    },
+    }
 }
 
 export default format;

@@ -5,7 +5,7 @@
 
 A dependency-free Vue plugin for formatting and validating credit card form fields.
 
-A directive is provided for input masking form fields,
+A directive is provides input masking, card brand awareness, card number and expiration validation and other features to make creating payment forms a little easier for both you and your users.
 
 [View Demo](https://wuori.github.io/vue-credit-card-validation/example/)
 
@@ -66,7 +66,7 @@ For further details, see the [stripe/jquery.payment](https://github.com/stripe/j
 
 This plugin is not intended for collection credit card data directly. Instead, it is used to format and validate the supplied card information before tokenizing it (for Stripe, etc.) or otherwise storing it securely.
 
-Using (Stripe Elements)[https://stripe.com/docs/stripe-js/elements/quickstart] will offer much of the same functionality with much easier implementation and PCI compliance.
+Using [Stripe Elements](https://stripe.com/docs/stripe-js/elements/quickstart) will offer much of the same functionality with much easier implementation and PCI compliance.
 
 ## Credits
 
