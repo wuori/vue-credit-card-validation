@@ -44,11 +44,8 @@ app.mount('#app');
 ```js
 // Vue 2 - Implementation Example
 import Vue from 'vue';
-
 import VueCardFormat from 'vue-credit-card-validation';
-
 Vue.use(VueCardFormat);
-
 new Vue({
   el: '#app',
 });
