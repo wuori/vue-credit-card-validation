@@ -1,7 +1,7 @@
 {
   "name": "vue-credit-card-validation",
   "description": "A Vue plugin for formatting and validating credit card forms to offer the same functionality as Stripe's jquery.payment library (and more!).",
-  "version": "0.1.11",
+  "version": "1.0.1",
   "author": {
     "name": "Michael Wuori",
     "email": "michael.wuori@gmail.com"
@@ -10,8 +10,13 @@
     "url": "https://github.com/wuori/vue-credit-card-validation/issues"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
+    "@vue/compat": "^3.1.0",
+    "@vue/compiler-sfc": "^3.1.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^7.1.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-istanbul": "^5.2.0",
     "babel-polyfill": "6.22.0",
@@ -31,7 +36,9 @@
     "rollup-plugin-replace": "^1.1.1",
     "set-value": ">=4.0.1",
     "uglify-js": "^2.7.5",
-    "vue": "^2.6.11",
+    "vue": "^3.2.11",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^5.52.1",
     "yargs-parser": ">=5.0.1"
   },
@@ -62,6 +69,7 @@
     "url": "git+https://github.com/wuori/vue-credit-card-validation.git"
   },
   "scripts": {
+    "serve": "vue-cli-service serve",
     "build": "node config/build.js",
     "clean": "rm -rf coverage && rm -rf dist/*.js* && rm ./*.log",
     "lint": "eslint src test config"

@@ -1,5 +1,5 @@
 /*!
- * vue-credit-card-validation v0.1.10 
+ * vue-credit-card-validation v0.1.11 
  * (c) 2021 Michael Wuori
  * Released under the MIT License.
  */
@@ -700,10 +700,10 @@ var format = {
 var VueCardFormat = {
   install: function install(vue, opts) {
     // provide plugin to Vue
-    vue.prototype.$cardFormat = format;
+    vue.config.globalProperties.$cardFormat = format; 
     // provide directive
     vue.directive('cardformat', {
-      bind: function bind(el, binding, vnode) {
+      beforeMount: function beforeMount(el, binding, vnode) {
         // see if el is an input
         if (el.nodeName.toLowerCase() !== 'input'){
           el = el.querySelector('input');
@@ -712,10 +712,10 @@ var VueCardFormat = {
         var method = Object.keys(format).find(function (key) { return key.toLowerCase() === binding.arg.toLowerCase(); });
         format[method](el, vnode);
         // update cardBrand value if available
-        if (method == 'formatCardNumber' && typeof vnode.context.cardBrand !== 'undefined'){
+        if (method == 'formatCardNumber' && typeof binding.instance.cardBrand !== 'undefined'){
           el.addEventListener('keyup', function () {
             if (el.dataset.cardBrand) {
-              vnode.context.cardBrand = el.dataset.cardBrand;
+              binding.instance.cardBrand = el.dataset.cardBrand;
             }
           });
         }
@@ -723,9 +723,5 @@ var VueCardFormat = {
     });  
   }
 };
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(VueCardFormat);
-}
 
 export default VueCardFormat;

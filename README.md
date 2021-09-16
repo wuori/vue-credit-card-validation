@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue-credit-card-validation.svg)](https://www.npmjs.com/package/vue-credit-card-validation)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
+[![vue3](https://img.shields.io/badge/vue-3.x-brightgreen.svg)](https://vuejs.org/)
 
 A dependency-free Vue plugin for formatting and validating credit card form fields.
 
@@ -11,11 +12,22 @@ A directive is provides input masking, card brand awareness, card number and exp
 
 ## Installation
 
+*For Vue 3:* 
+
 Via npm:
 ```sh
 yarn add vue-credit-card-validation
 - OR -
 npm install vue-credit-card-validation
+```
+
+*For Vue 2:*
+
+Via npm:
+```sh
+yarn add vue-credit-card-validation@0.1.x
+- OR -
+npm install vue-credit-card-validation@0.1.x
 ```
 
 ## Using this plugin
