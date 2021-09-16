@@ -41,7 +41,7 @@
     "dist/vue-credit-card-validation.common.js",
     "src"
   ],
-  "homepage": "https://github.com/wuori/vue-stripe-helpers#readme",
+  "homepage": "https://github.com/wuori/vue-credit-card-validation#readme",
   "main": "dist/vue-credit-card-validation.js",
   "module": "dist/vue-credit-card-validation.esm.js",
   "unpkg": "dist/vue-credit-card-validation.js",
