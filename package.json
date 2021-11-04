@@ -46,6 +46,7 @@
     "dist/vue-credit-card-validation.js",
     "dist/vue-credit-card-validation.min.js",
     "dist/vue-credit-card-validation.common.js",
+    "dist/vue-credit-card-validation.esm.js",
     "src"
   ],
   "homepage": "https://github.com/wuori/vue-credit-card-validation#readme",
