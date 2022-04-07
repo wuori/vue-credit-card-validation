@@ -13,6 +13,7 @@ const VueCardFormat = {
         }
         // call format function from prop
         let method = Object.keys(format).find((key) => key.toLowerCase() === binding.arg.toLowerCase());
+        let keyupEvent = new Event('keyup');
         format[method](el, vnode);
         // update cardBrand value if available
         if (method == 'formatCardNumber' && typeof binding.instance.cardBrand !== 'undefined'){
@@ -20,6 +21,12 @@ const VueCardFormat = {
             if (el.dataset.cardBrand) {
               binding.instance.cardBrand = el.dataset.cardBrand;
             };
+          })
+          // pasting a card number fails to update brand, etc.
+          el.addEventListener('paste', () => {
+            setTimeout(() => {
+              el.dispatchEvent(keyupEvent);
+            },10);
           })
         }
       }

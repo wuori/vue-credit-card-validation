@@ -1,6 +1,6 @@
 /*!
- * vue-credit-card-validation v1.0.2 
- * (c) 2021 Michael Wuori
+ * vue-credit-card-validation v1.0.3 
+ * (c) 2022 Michael Wuori
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -162,6 +162,8 @@ var validation = {
                 year = "19" + year;
             }
         }
+
+        console.log(year);
 
         if (year.length !== 4) { return false; }
 
@@ -716,6 +718,7 @@ var VueCardFormat = {
         }
         // call format function from prop
         var method = Object.keys(format).find(function (key) { return key.toLowerCase() === binding.arg.toLowerCase(); });
+        var keyupEvent = new Event('keyup');
         format[method](el, vnode);
         // update cardBrand value if available
         if (method == 'formatCardNumber' && typeof binding.instance.cardBrand !== 'undefined'){
@@ -723,6 +726,11 @@ var VueCardFormat = {
             if (el.dataset.cardBrand) {
               binding.instance.cardBrand = el.dataset.cardBrand;
             }
+          });
+          el.addEventListener('paste', function () {
+            setTimeout(function () {
+              el.dispatchEvent(keyupEvent);
+            },10);
           });
         }
       }
